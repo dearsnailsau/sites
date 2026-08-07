@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Masakim天瑪行空《5分鐘情緒避難所》推廣 Proposal</title>
+<style>
+:root{
+  --bg:#fbf6ef;--surface:#fffaf3;--surface2:#f8f3e9;
+  --green:#4c6b55;--green2:#7f9a75;--green-soft:#edf4e8;
+  --brown:#7f6f59;--line:#e8ddcc;--muted:#82786c;
+  --text:#3d3932;--accent:#bfd3b2;
+  --orange:#c9946a;--orange-soft:#fdf3ec;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",Arial,sans-serif;
+  background:var(--bg);color:var(--text);font-size:14px;line-height:1.72;}
+
+/* ── NAV ── */
+#topnav{position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(255,250,243,0.96);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);padding:0 20px;}
+.nav-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;
+  justify-content:space-between;height:52px;}
+.nav-brand{font-size:13px;font-weight:700;color:var(--green);letter-spacing:.04em;}
+.nav-links{display:flex;gap:4px;flex-wrap:wrap;}
+.nav-links a{font-size:11.5px;color:var(--brown);text-decoration:none;
+  padding:4px 9px;border-radius:14px;border:1px solid transparent;transition:.15s;}
+.nav-links a:hover,.nav-links a.active{background:var(--green-soft);
+  border-color:var(--accent);color:var(--green);}
+#menu-btn{display:none;background:none;border:1px solid var(--line);
+  border-radius:6px;padding:4px 8px;cursor:pointer;font-size:18px;color:var(--brown);}
+#mobile-menu{display:none;position:fixed;top:52px;left:0;right:0;z-index:99;
+  background:var(--surface);border-bottom:1px solid var(--line);padding:12px 20px;}
+#mobile-menu a{display:block;padding:8px 4px;color:var(--brown);text-decoration:none;
+  border-bottom:1px solid var(--line);font-size:13px;}
+#mobile-menu a:last-child{border-bottom:none;}
+
+/* ── LAYOUT ── */
+main{max-width:860px;margin:0 auto;padding:72px 20px 60px;}
+
+/* ── COVER ── */
+#cover{background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:48px 40px 40px;margin-bottom:28px;}
+.kicker{font-size:11px;letter-spacing:.15em;color:var(--green2);text-transform:uppercase;margin-bottom:16px;}
+.cover-title{font-size:30px;font-weight:700;color:var(--green);line-height:1.3;margin-bottom:8px;}
+.cover-sub{font-size:15px;color:var(--brown);margin-bottom:28px;}
+.cover-meta{border-top:1px solid var(--line);padding-top:18px;display:grid;
+  grid-template-columns:1fr 1fr;gap:10px;}
+.meta-item{font-size:13px;} .meta-label{font-weight:600;color:var(--green);margin-right:4px;}
+.cover-hero{width:100%;border-radius:8px;border:1px solid var(--line);margin:24px 0 0;}
+.cover-img-note{font-size:10.5px;color:var(--muted);margin-top:6px;text-align:center;font-style:italic;}
+
+/* ── TOC ── */
+#toc-section{background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:28px 32px;margin-bottom:28px;}
+#toc-section h2{font-size:16px;font-weight:700;color:var(--green);margin-bottom:16px;}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.toc-item{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;
+  background:var(--surface2);border:1px solid var(--line);border-radius:8px;
+  text-decoration:none;color:var(--text);transition:.15s;cursor:pointer;}
+.toc-item:hover{background:var(--green-soft);border-color:var(--accent);}
+.toc-num{font-size:18px;font-weight:700;color:var(--accent);min-width:28px;line-height:1.2;}
+.toc-text{font-size:13px;font-weight:600;color:var(--green);line-height:1.4;}
+
+/* ── CHAPTER ── */
+.chapter{background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:32px 36px;margin-bottom:20px;scroll-margin-top:66px;}
+.ch-header{display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:20px;cursor:pointer;}
+.ch-title{font-size:20px;font-weight:700;color:var(--green);display:flex;align-items:center;gap:10px;}
+.ch-num{background:var(--green);color:#fff;font-size:12px;font-weight:700;
+  width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.ch-toggle{font-size:20px;color:var(--brown);transition:.2s;user-select:none;}
+.ch-toggle.open{transform:rotate(180deg);}
+.ch-body{overflow:hidden;transition:max-height .35s ease;}
+
+h3{font-size:15px;font-weight:700;color:var(--brown);margin:20px 0 8px;}
+h4{font-size:13.5px;font-weight:600;color:var(--green);margin:14px 0 6px;}
+p{margin:0 0 10px;font-size:13.5px;}
+ul,ol{padding-left:22px;margin:6px 0 10px;}
+li{margin-bottom:5px;font-size:13.5px;}
+
+.callout{border-left:4px solid var(--accent);background:var(--surface2);
+  padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0;font-size:13.5px;}
+.callout strong{color:var(--green);}
+.softbox{border:1px solid var(--line);background:var(--surface2);
+  padding:14px 16px;border-radius:8px;margin:12px 0;font-size:13.5px;}
+.softbox strong{color:var(--green);}
+
+/* ── TABLE ── */
+.table-wrap{overflow-x:auto;margin:14px 0 18px;border-radius:8px;border:1px solid var(--line);}
+table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:500px;}
+th{background:var(--green-soft);color:var(--green);font-weight:700;
+  padding:9px 10px;text-align:left;border-bottom:2px solid var(--accent);}
+td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:color-mix(in srgb,var(--green) 3%,var(--surface));}
+a{color:var(--green);text-decoration:none;font-weight:600;}
+a:hover{text-decoration:underline;}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;}
+.tag-free{background:#e8f4e8;color:#3a6b3a;}
+.tag-paid{background:#fdf0e5;color:#7a4a1e;}
+.tag-local{background:#e8edf8;color:#2a3f6b;}
+.small{font-size:11px;color:var(--muted);}
+
+/* ── PERSONA CARDS ── */
+.persona-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0;}
+.persona-card{border:1px solid var(--line);border-radius:8px;padding:14px 16px;
+  background:var(--surface2);transition:.15s;}
+.persona-card:hover{border-color:var(--accent);background:var(--green-soft);}
+.persona-name{font-weight:700;color:var(--green);font-size:13.5px;margin-bottom:4px;}
+.persona-age{font-size:11px;color:var(--muted);margin-bottom:8px;}
+.persona-row{font-size:12px;margin-bottom:4px;display:flex;gap:6px;}
+.persona-key{font-weight:600;color:var(--brown);min-width:52px;}
+
+/* ── CAMPAIGN ── */
+.camp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:14px 0;}
+.camp-card{border:1px solid var(--line);border-radius:8px;padding:16px;
+  background:var(--surface2);}
+.camp-num{font-size:22px;font-weight:700;color:var(--accent);line-height:1;}
+.camp-title{font-size:13px;font-weight:700;color:var(--green);margin:4px 0 10px;}
+.camp-body{font-size:12px;color:var(--text);line-height:1.6;}
+
+/* ── SUBSCRIPTION ── */
+.sub-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:14px 0;}
+.sub-card{border:2px solid var(--line);border-radius:10px;padding:18px 16px;
+  background:var(--surface);transition:.15s;}
+.sub-card:hover{border-color:var(--green2);}
+.sub-tier{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--green2);margin-bottom:4px;}
+.sub-name{font-size:16px;font-weight:700;color:var(--green);margin-bottom:6px;}
+.sub-price{font-size:20px;font-weight:700;color:var(--orange);margin-bottom:10px;}
+.sub-price span{font-size:12px;color:var(--muted);font-weight:400;}
+.sub-list{font-size:12px;line-height:1.7;color:var(--text);}
+.sub-tag{font-size:11px;color:var(--muted);margin-top:8px;font-style:italic;}
+
+/* ── BACK TO TOP ── */
+#totop{position:fixed;bottom:28px;right:24px;background:var(--green);color:#fff;
+  border:none;border-radius:50%;width:40px;height:40px;font-size:18px;cursor:pointer;
+  display:none;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.15);
+  transition:.2s;}
+#totop.show{display:flex;}
+
+/* ── REFS ── */
+.ref-list{font-size:11.5px;color:var(--muted);line-height:1.8;}
+.ref-list li{margin-bottom:6px;word-break:break-all;}
+
+/* ── PROGRESS BAR ── */
+#progress{position:fixed;top:52px;left:0;height:2px;background:var(--green2);
+  width:0%;transition:width .15s;z-index:101;}
+
+/* ── FILTER ── */
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.filter-btn{padding:5px 14px;border-radius:20px;border:1px solid var(--line);
+  background:var(--surface);color:var(--brown);font-size:12px;cursor:pointer;transition:.15s;}
+.filter-btn:hover,.filter-btn.active{background:var(--green-soft);
+  border-color:var(--accent);color:var(--green);}
+tr.hidden{display:none;}
+
+@media(max-width:640px){
+  #cover{padding:28px 20px 24px;}
+  .cover-meta{grid-template-columns:1fr;}
+  .toc-grid{grid-template-columns:1fr;}
+  .chapter{padding:20px 16px;}
+  .persona-grid,.camp-grid,.sub-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  #menu-btn{display:block;}
+}
+</style>
+</head>
+<body>
+
+<!-- 進度條 -->
+<div id="progress"></div>
+
+<!-- 頂部導覽 -->
+<nav id="topnav">
+  <div class="nav-inner">
+    <div class="nav-brand">🌿 Masakim天瑪行空</div>
+    <div class="nav-links">
+      <a href="#ch1">市場</a>
+      <a href="#ch2">競品</a>
+      <a href="#ch3">受眾</a>
+      <a href="#ch4">賣點</a>
+      <a href="#ch5">定位</a>
+      <a href="#ch6">推廣</a>
+      <a href="#ch7">活動</a>
+      <a href="#ch8">定價</a>
+      <a href="#ch9">訂閱</a>
+    </div>
+    <button id="menu-btn" onclick="toggleMenu()">☰</button>
+  </div>
+</nav>
+
+<!-- 手機選單 -->
+<div id="mobile-menu">
+  <a href="#ch1" onclick="closeMenu()">第一章 市場趨勢分析</a>
+  <a href="#ch2" onclick="closeMenu()">第二章 競爭對手分析</a>
+  <a href="#ch3" onclick="closeMenu()">第三章 目標受眾分析</a>
+  <a href="#ch4" onclick="closeMenu()">第四章 產品核心賣點</a>
+  <a href="#ch5" onclick="closeMenu()">第五章 品牌定位與法規</a>
+  <a href="#ch6" onclick="closeMenu()">第六章 推廣主軸</a>
+  <a href="#ch7" onclick="closeMenu()">第七章 Campaign Ideas</a>
+  <a href="#ch8" onclick="closeMenu()">第八章 競品定價清單</a>
+  <a href="#ch9" onclick="closeMenu()">第九章 訂閱制設計</a>
+</div>
+
+<main>
+
+<!-- 封面 -->
+<section id="cover">
+  <div class="kicker">產品推廣 Proposal｜台灣市場｜2026年7月</div>
+  <div class="cover-title">Masakim天瑪行空<br>《5分鐘情緒避難所》iPhone App</div>
+  <div class="cover-sub">健康促進 × 芳香生活風格 × 日常情緒自我照護</div>
+  <div class="cover-meta">
+    <div class="meta-item"><span class="meta-label">品牌：</span>Masakim天瑪行空</div>
+    <div class="meta-item"><span class="meta-label">狀態：</span>概念與規劃階段</div>
+    <div class="meta-item"><span class="meta-label">創辦人：</span>台灣護理師執照 + 芳療師認證，已正式登記公司</div>
+    <div class="meta-item"><span class="meta-label">核心語：</span>被理解的力量，從5分鐘開始</div>
+  </div>
+  <img class="cover-hero" src="https://static-us-img.skywork.ai/prod/analysis/2026-07-14/2298214532833501052/2076855301605011456_8c7f81da77c0a7e6a472504eb8add0c1.png" alt="Masakim 品牌視覺參考圖">
+  <div class="cover-img-note">品牌視覺參考：日系療癒風格，具體商用視覺需避免直接複製特定動畫版權角色。</div>
+</section>
+
+<!-- 目錄 -->
+<section id="toc-section">
+  <h2>📋 目錄 — 點擊直接跳轉</h2>
+  <div class="toc-grid">
+    <a class="toc-item" href="#ch1"><span class="toc-num">01</span><span class="toc-text">市場趨勢分析</span></a>
+    <a class="toc-item" href="#ch2"><span class="toc-num">02</span><span class="toc-text">競爭對手分析</span></a>
+    <a class="toc-item" href="#ch3"><span class="toc-num">03</span><span class="toc-text">目標受眾分析</span></a>
+    <a class="toc-item" href="#ch4"><span class="toc-num">04</span><span class="toc-text">產品核心賣點</span></a>
+    <a class="toc-item" href="#ch5"><span class="toc-num">05</span><span class="toc-text">品牌定位與法規框架</span></a>
+    <a class="toc-item" href="#ch6"><span class="toc-num">06</span><span class="toc-text">推廣主軸</span></a>
+    <a class="toc-item" href="#ch7"><span class="toc-num">07</span><span class="toc-text">三個 Campaign Ideas</span></a>
+    <a class="toc-item" href="#ch8"><span class="toc-num">08</span><span class="toc-text">競品定價參考清單</span></a>
+    <a class="toc-item" href="#ch9"><span class="toc-num">09</span><span class="toc-text">訂閱制產品設計建議</span></a>
+  </div>
+</section>
+
+<!-- 第一章 -->
+<section class="chapter" id="ch1">
+  <div class="ch-header" onclick="toggleChapter(this)">
+    <div class="ch-title"><span class="ch-num">1</span>市場趨勢分析</div>
+    <span class="ch-toggle open">▼</span>
+  </div>
+  <div class="ch-body">
+    <p>Masakim 切入的是台灣心理健康需求、芳療生活化、LINE 高滲透率與 iOS 付費生態交會下的「日常情緒自我照護」場景。</p>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>趨勢面向</th><th>核實數據</th><th>對 Masakim 的意義</th></tr></thead>
+      <tbody>
+        <tr><td>全球心理健康 App</td><td>2024年 USD$74.8億，2030年預估 USD$175.2億 <sup><a href="#ref1">[1]</a></sup></td><td>情緒管理工具正由小眾走向主流健康管理入口</td></tr>
+        <tr><td>台灣精油市場</td><td>年產值約 NT$15億（推測），85% 依賴進口 <sup><a href="#ref2">[2]</a></sup></td><td>可包裝為「情緒急救手作包」與訂閱盒</td></tr>
+        <tr><td>全球芳療市場</td><td>2025年 USD$79億，CAGR 6.8%，2035年 USD$152億 <sup><a href="#ref3">[3]</a></sup></td><td>芳療 × 數位情緒紀錄可提升顧客生命週期價值</td></tr>
+        <tr><td>台灣精神健康指數</td><td>2024年 81.67分，6年最低（2022年為82.4分）<sup><a href="#ref4">[4]</a></sup></td><td>「低門檻、可愛、非診斷」的情緒照護入口具溝通空間</td></tr>
+        <tr><td>青少年情緒困擾</td><td>17.7% 台灣青少年有中度以上情緒困擾 <sup><a href="#ref5">[5]</a></sup></td><td>15–22歲族群是可觸及的種草擴散圈</td></tr>
+        <tr><td>青壯年就醫增幅</td><td>15–45歲精神科就醫率由 7.4% 升至 9.5%（+27%）<sup><a href="#ref6">[6]</a></sup></td><td>主力受眾與市場痛點高度吻合，文案需避免疾病宣稱</td></tr>
+        <tr><td>30–45歲焦慮盛行率</td><td>常見精神疾患盛行率 25–27%（約每4人1人）<sup><a href="#ref6">[6]</a></sup></td><td>職場族群付費能力與需求密度兼具</td></tr>
+        <tr><td>LINE × iOS 生態</td><td>LINE 台灣滲透率 93–95%，月活 2,200萬；iOS 貢獻全球 App 訂閱營收 69% <sup><a href="#ref7">[7]</a><a href="#ref8">[8]</a></sup></td><td>LINE OA 做留存+諮詢入口，免費 App 下載後以 iOS 生態變現</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout">💡 <strong>策略結論：</strong>市場機會不在「再做一個冥想 App」，而在建立一個具護理同理心、芳療儀式感、實體手作觸發與 LINE 對話入口的日常情緒避難所。</div>
+  </div>
+</section>
+
+<!-- 第二章 -->
+<section class="chapter" id="ch2">
+  <div class="ch-header" onclick="toggleChapter(this)">
+    <div class="ch-title"><span class="ch-num">2</span>競爭對手分析</div>
+    <span class="ch-toggle open">▼</span>
+  </div>
+  <div class="ch-body">
+    <p>競品分四類：國際冥想/睡眠 App、情緒日記 App、心理健康平台，以及芳療訂閱與實體情緒急救產品。</p>
+    <div class="filter-row">
+      <button class="filter-btn active" onclick="filterTable('all',this)">全部</button>
+      <button class="filter-btn" onclick="filterTable('國際',this)">🌏 國際App</button>
+      <button class="filter-btn" onclick="filterTable('台灣',this)">🇹🇼 台灣本土</button>
+      <button class="filter-btn" onclick="filterTable('實體',this)">📦 實體產品</button>
+    </div>
+    <div class="table-wrap">
+    <table id="comp-table">
+      <thead><tr><th>類型</th><th>競品</th><th>台灣定價</th><th>核心特色</th><th>與 Masakim 差異</th><th>來源</th></tr></thead>
+      <tbody>
+        <tr data-type="國際"><td><span class="tag tag-free">國際冥想</span></td><td><strong>Calm</strong></td><td>NT$2,280/年（USD$69.99）</td><td>冥想、助眠故事、呼吸、專注音樂</td><td>內容庫強，缺芳療配方、手作包與芳療師預約閉環</td><td><a href="https://apps.apple.com/tw/app/calm/id571800810" target="_blank">App Store ↗</a></td></tr>
+        <tr data-type="國際"><td><span class="tag tag-free">國際冥想</span></td><td><strong>Headspace</strong></td><td>NT$390/月；NT$2,790/年</td><td>系統化冥想、睡眠廣播、專注訓練</td><td>科學感強，偏國際化；Masakim 走台灣在地、可愛、芳香風格</td><td><a href="https://apps.apple.com/tw/app/headspace-mindful-meditation/id493145008" target="_blank">App Store ↗</a></td></tr>
+        <tr data-type="國際"><td><span class="tag tag-free">國際冥想</span></td><td><strong>Insight Timer</strong></td><td>免費＋NT$1,930/年</td><td>29萬+免費冥想庫、計時器、社群直播</td><td>選擇成本高；Masakim 主打低腦力、1分鐘選擇與5分鐘指引</td><td><a href="https://apps.apple.com/tw/app/insight-timer-meditate-sleep/id337472899" target="_blank">App Store ↗</a></td></tr>
+        <tr data-type="國際"><td><span class="tag tag-paid">情緒日記</span></td><td><strong>Daylio</strong></td><td>NT$149/月；NT$749–999/年</td><td>圖示化情緒日記、習慣追蹤、無需打字</td><td>記錄功能強，缺護理舒緩指引與芳療實體轉換</td><td><a href="https://apps.apple.com/tw/app/daylio-journal-mood-tracker/id1194023242" target="_blank">App Store ↗</a></td></tr>
+        <tr data-type="國際"><td><span class="tag tag-paid">AI日記</span></td><td><strong>Reflectly</strong></td><td>NT$340/月；NT$1,350–1,990/年</td><td>AI 引導日記、反思提問、心情追蹤</td><td>偏文字反思；Masakim 以低文字、嗅吸與 ASMR 手作切入</td><td><a href="https://apps.apple.com/tw/app/reflectly-journal-ai-diary/id1241229134" target="_blank">App Store ↗</a></td></tr>
+        <tr data-type="國際"><td><span class="tag tag-paid">心理健康</span></td><td><strong>MindDoc</strong></td><td>NT$240/月；NT$2,090/年</td><td>心理評估、CBT 課程、情緒監測</td><td>「心理健康感」較重；Masakim 需明確定位為健康促進與生活風格</td><td><a href="https://apps.apple.com/tw/app/minddoc-your-mental-health/id1052216403" target="_blank">App Store ↗</a></td></tr>
+        <tr data-type="國際"><td><span class="tag tag-free">情緒覺察</span></td><td><strong>How We Feel</strong></td><td>完全免費（非營利）</td><td>耶魯科學家開發，精準情緒詞彙標記</td><td>公益導向；Masakim 可透過芳療與實體商品變現</td><td><a href="https://apps.apple.com/tw/app/how-we-feel/id1562527312" target="_blank">App Store ↗</a></td></tr>
+        <tr data-type="國際"><td><span class="tag tag-free">白噪音</span></td><td><strong>潮汐 Tide</strong></td><td>NT$80–90/月；NT$890–1,190/年</td><td>自然白噪音、番茄鐘、冥想</td><td>聲音感官強；Masakim 可用香氣創造不同感官記憶</td><td><a href="https://apps.apple.com/tw/app/tide-sleep-focus-meditation/id1077776989" target="_blank">App Store ↗</a></td></tr>
+        <tr data-type="台灣"><td><span class="tag tag-local">台灣App</span></td><td><strong>沙發心理</strong><br>Couchspace</td><td>推測 NT$200–300/月</td><td>正念冥想、瑜珈、睡前故事、線上心理諮詢預約</td><td>本土心理服務較完整；Masakim 差異化為芳療師 × 手作型情緒照護</td><td><a href="https://www.thecouchspace.com/" target="_blank">官網 ↗</a></td></tr>
+        <tr data-type="實體"><td><span class="tag tag-paid">芳療訂閱盒</span></td><td><strong>HoHovibe<br>香氣月刊</strong></td><td>NT$880–1,280/月</td><td>每月主題精油、芳療指南、療癒小物</td><td>有芳療訂閱，缺 App 情緒數據、每日打卡與觸發式建議</td><td><a href="https://www.pinkoi.com/store/hohosensory" target="_blank">Pinkoi ↗</a></td></tr>
+        <tr data-type="實體"><td><span class="tag tag-paid">實體教材</span></td><td><strong>雞湯來了<br>情緒急救包</strong></td><td>NT$180–680</td><td>情緒急救教材與情緒卡牌</td><td>實體教育工具；Masakim 可結合 App、LINE 與芳療師諮詢</td><td><a href="https://www.chickensoupfamily.com/" target="_blank">品牌官網 ↗</a></td></tr>
+        <tr data-type="實體"><td><span class="tag tag-paid">花精精油</span></td><td><strong>芳療家<br>急救花精</strong></td><td>10mL 約 NT$250</td><td>急救花精系列</td><td>單品銷售；Masakim 可延伸為情緒打卡後的配方建議與補充購買</td><td><a href="https://aromahealer.com.tw/" target="_blank">品牌官網 ↗</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout">🔍 <strong>市場缺口：</strong>目前無任何競品同時整合「芳療建議 + 情緒打卡 + ASMR 虛實觸發 + 芳療師預約」。Masakim 的機會是把 App 由工具轉化為可被日常召喚的情緒避難所。</div>
+  </div>
+</section>
+
+<!-- 第三章 -->
+<section class="chapter" id="ch3">
+  <div class="ch-header" onclick="toggleChapter(this)">
+    <div class="ch-title"><span class="ch-num">3</span>目標受眾分析</div>
+    <span class="ch-toggle open">▼</span>
+  </div>
+  <div class="ch-body">
+    <p>初期建議以「職場壓力族」作為核心轉換客群，同時保留學生、創作者、照顧者與芳療生活風格族群作為內容擴散圈。</p>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-name">🏢 台灣職場上班族</div>
+        <div class="persona-age">25–45歲</div>
+        <div class="persona-row"><span class="persona-key">痛點</span>工時長、壓力大、缺乏被理解，容易資訊過載與情緒耗竭</div>
+        <div class="persona-row"><span class="persona-key">動機</span>需要下班前後快速平靜，找到低負擔的自我照護方法</div>
+        <div class="persona-row"><span class="persona-key">觸發付費</span>情緒月報、LINE提醒、專屬配方、線上諮詢、手作包</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-name">🎒 中學與大學學生</div>
+        <div class="persona-age">15–22歲</div>
+        <div class="persona-row"><span class="persona-key">痛點</span>學業壓力、同儕比較、社交焦慮、自信不足</div>
+        <div class="persona-row"><span class="persona-key">動機</span>想用可愛、非說教的方式記錄心情，不希望被貼標籤</div>
+        <div class="persona-row"><span class="persona-key">觸發付費</span>免費核心功能、虛擬植物、情緒調色盤分享、低價學生方案</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-name">🎨 內容創作者</div>
+        <div class="persona-age">20–35歲</div>
+        <div class="persona-row"><span class="persona-key">痛點</span>熬夜、創作瓶頸、演算法焦慮、情緒起伏大</div>
+        <div class="persona-row"><span class="persona-key">動機</span>需要在拍攝、剪輯、發文前快速重啟專注與安全感</div>
+        <div class="persona-row"><span class="persona-key">觸發付費</span>季節限定配方、ASMR 手作包、可分享情緒圖、聯名禮盒</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-name">🏠 全職主婦與照顧者</div>
+        <div class="persona-age">25–45歲</div>
+        <div class="persona-row"><span class="persona-key">痛點</span>照顧責任重、被看見感不足、休息時間碎片化</div>
+        <div class="persona-row"><span class="persona-key">動機</span>在家中短暫抽離，透過香氣與簡短指引找回自我關照</div>
+        <div class="persona-row"><span class="persona-key">觸發付費</span>每月芳草包、30分鐘芳療師線上諮詢、專屬調配建議</div>
+      </div>
+      <div class="persona-card" style="grid-column:span 2;">
+        <div class="persona-name">🌸 芳療與日系療癒愛好者</div>
+        <div class="persona-age">跨年齡</div>
+        <div class="persona-row"><span class="persona-key">痛點</span>已購買精油或療癒小物，但缺少持續使用的情境與動機</div>
+        <div class="persona-row"><span class="persona-key">動機</span>想把精油使用變成日常儀式，並收集配方、香氣與心情紀錄</div>
+        <div class="persona-row"><span class="persona-key">觸發付費</span>進階配方庫、精油收藏冊、主題訂閱盒、聯名限定產品</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 第四章 -->
+<section class="chapter" id="ch4">
+  <div class="ch-header" onclick="toggleChapter(this)">
+    <div class="ch-title"><span class="ch-num">4</span>產品核心賣點</div>
+    <span class="ch-toggle open">▼</span>
+  </div>
+  <div class="ch-body">
+    <h3>No.1 每日情緒復盤：Daily Reframing</h3>
+    <p>每日只需 1 分鐘，使用低腦力方式勾選當下心情（👍/😐/👎）、焦慮程度（🔴嚴重／🟠中等／🟡輕微／🟢愉快）與可選填觸發事件。核心不是要求用戶寫長篇日記，而是讓情緒被看見、被記錄、可回顧。</p>
+    <h3>No.2 護理級舒緩指引：Caregiver Guidance</h3>
+    <p>完成選擇後，App 立即給出一個具體、可操作、非醫療化的舒緩指引——例如 <strong>3-3-3 呼吸法</strong>（3秒吸氣、3秒屏息、3秒緩慢呼出），以及一句簡短自我同理話語：「<em>告訴自己，今天做的努力已經足夠了。</em>」語氣需保留護理專業的溫柔，而非冷冰冰的工具指令。</p>
+    <h3>No.3 對應芳療建議配方：Aromatherapy Formulations</h3>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>焦慮程度</th><th>建議芳香調理</th><th>適用植物</th></tr></thead>
+      <tbody>
+        <tr><td>🔴 嚴重緊繃</td><td>薰衣草 + 乳香擴香，舒緩深層緊張</td><td>薰衣草 Lavender、乳香 Frankincense</td></tr>
+        <tr><td>🟠 中等緊繃</td><td>柑橘 + 天竺葵，提振安心感</td><td>柑橘 Mandarin、天竺葵 Geranium</td></tr>
+        <tr><td>🟡 輕微緊繃</td><td>薄荷 + 檸檬，清涼舒緩頭腦緊繃</td><td>薄荷 Peppermint、檸檬 Lemon</td></tr>
+        <tr><td>🟢 心情愉快</td><td>甜橙香氛，維持喜悅感</td><td>甜橙 Sweet Orange</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="small">⚠️ 所有文字需使用「建議、芳香調理、舒緩、放鬆」等生活風格用語，避免宣稱治療效果。</p>
+    <h3>No.4 虛實整合觸發點：Integration Trigger</h3>
+    <p>當用戶勾選高度緊繃時，App 引導：① 停下手上工作 15 分鐘 → ② 打開「情緒急救手作包」→ ③ 進行 ASMR 揉捏與調配（15分鐘）→ ④ 嗅吸香氣 → ⑤ 重啟生活節奏。這是 Masakim 與純 App 競品最大差異：<strong>數位入口帶動實體產品與真人服務</strong>。</p>
+    <div class="softbox"><strong>核心差異化：</strong>Masakim 不是純工具 App，而是一個由護理師與芳療師專業背景支撐的「5分鐘情緒避難所」；它讓使用者在滑動手機時感到被理解，再用香氣與手作把自己帶回生活。</div>
+  </div>
+</section>
+
+<!-- 第五章 -->
+<section class="chapter" id="ch5">
+  <div class="ch-header" onclick="toggleChapter(this)">
+    <div class="ch-title"><span class="ch-num">5</span>品牌定位建議與法規框架</div>
+    <span class="ch-toggle open">▼</span>
+  </div>
+  <div class="ch-body">
+    <p>建議將 Masakim 定位為「健康促進 × 芳香生活風格」品牌，而非醫療或心理治療服務。台灣法規紅線在於：若 App 宣稱可診斷、治療、減輕或直接預防疾病，可能涉及醫療行為或醫療器材軟體認定。<sup><a href="#ref22">[22]</a><a href="#ref23">[23]</a></sup></p>
+    <h3>⚖️ 宣傳用語對照表</h3>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>❌ 禁用／高風險字眼</th><th>✅ 建議替代字眼</th><th>相關法規</th></tr></thead>
+      <tbody>
+        <tr><td>治療焦慮、診斷憂鬱、抗憂鬱、根治失眠</td><td>舒緩緊張情緒、心情紀錄、自我覺察、幫助入睡</td><td><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=L0020001" target="_blank">醫師法 ↗</a></td></tr>
+        <tr><td>臨床證實療效、醫師處方等級、具科學實證</td><td>數據追蹤、自我健康管理、生活品質提升</td><td><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=L0030093" target="_blank">醫療器材管理法 ↗</a></td></tr>
+        <tr><td>消炎、止痛、癒合傷口、預防感冒（精油宣傳）</td><td>芳香調理、環境芬芳、清涼感、舒緩肌膚不適</td><td><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=L0030096" target="_blank">化粧品廣告準則 ↗</a></td></tr>
+        <tr><td>取代醫師診斷、具治療機制</td><td>輔助放鬆引導（非醫療）、提供健康資訊</td><td><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0040140" target="_blank">食安廣告準則 ↗</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <h3>🔐 App 必備合規措施</h3>
+    <ul>
+      <li>App、官網、App Store 介紹與付費頁面須標示：「本產品非醫療器材，不具診斷或治療功能；內容僅供日常自我照護與健康生活參考。」</li>
+      <li>首次使用前取得明確電子同意，告知資料蒐集目的、利用期間、地區、對象、方式與使用者刪除/匯出權。<sup><a href="#ref26">[26]</a></sup></li>
+      <li>情緒資料若涉及心理諮商或精神病歷範疇，可能被視為敏感個資（<a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=I0050021" target="_blank">《個資法》第6條 ↗</a>）；建議採加密儲存、最小化蒐集、用戶刪除權。</li>
+      <li>依 App Store 隱私標籤如實申報「健康與健身」資料蒐集，並清楚說明權限用途。</li>
+    </ul>
+    <div class="callout">✍️ <strong>合規口吻範例：</strong>「Masakim 協助你記錄日常情緒、建立壓力管理習慣，並透過芳香調理與短時間呼吸練習，陪你找回較安穩的生活節奏。」</div>
+  </div>
+</section>
+
+<!-- 第六章 -->
+<section class="chapter" id="ch6">
+  <div class="ch-header" onclick="toggleChapter(this)">
+    <div class="ch-title"><span class="ch-num">6</span>推廣主軸</div>
+    <span class="ch-toggle open">▼</span>
+  </div>
+  <div class="ch-body">
+    <p>在每月 NT$3萬以下的微型預算中，建議採「<strong>Instagram 種草 → LINE 留存 → 實體手作包轉換</strong>」三段式策略。</p>
+    <h3>📸 Instagram 策略</h3>
+    <ul>
+      <li><strong>Reels 短影片：</strong>精油開箱、情緒打卡示範、5分鐘舒緩流程、ASMR 手作聲音（每週1–2支）</li>
+      <li><strong>療癒插圖貼文：</strong>以日系乾淨、柔和暖色與植物角色建立可收藏的品牌記憶</li>
+      <li><strong>UGC 情緒分享挑戰：</strong>鼓勵用戶以 #今天我幾分 分享情緒急救手作包開箱</li>
+      <li><strong>Stories 互動投票：</strong>每日焦慮指數投票、今天需要哪一種香氣、今晚想被哪一句話安慰</li>
+    </ul>
+    <h3>💬 LINE Official Account 策略</h3>
+    <ul>
+      <li>每日早晨或睡前情緒打卡推播，連回 App</li>
+      <li>每週芳療小知識與季節性配方提醒</li>
+      <li>一對一諮詢入口，將高需求用戶導向線上或線下芳療師服務</li>
+      <li>LINE POINTS 或自有積分機制，讓回訪行為可被獎勵</li>
+    </ul>
+    <h3>🎮 Gamification 留存設計</h3>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>機制</th><th>說明</th><th>解決的痛點</th></tr></thead>
+      <tbody>
+        <tr><td>連續打卡勳章</td><td>7天、30天、100天</td><td>建立每日開 App 習慣</td></tr>
+        <tr><td>情緒調色盤</td><td>累積月度情緒地圖，可分享（不揭露敏感細節）</td><td>情緒平穩時也有分享動機</td></tr>
+        <tr><td>精油收藏冊</td><td>完成特定任務後解鎖更多芳香調理建議</td><td>增加配方探索樂趣</td></tr>
+        <tr><td>情緒能量值</td><td>養成虛擬植物，讓使用動機不只依賴負面情緒</td><td>解決「心情好就不開 App」問題</td></tr>
+        <tr><td>季節限定配方</td><td>每季解鎖限定精油配方與手作材料</td><td>製造稀缺感與訂閱動機</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- 第七章 -->
+<section class="chapter" id="ch7">
+  <div class="ch-header" onclick="toggleChapter(this)">
+    <div class="ch-title"><span class="ch-num">7</span>三個 Campaign Ideas</div>
+    <span class="ch-toggle open">▼</span>
+  </div>
+  <div class="ch-body">
+    <div class="camp-grid">
+      <div class="camp-card">
+        <div class="camp-num">01</div>
+        <div class="camp-title">「今天你幾分？」<br>情緒打卡挑戰</div>
+        <div class="camp-body">
+          <strong>核心：</strong>把焦慮指數轉化為容易分享的日常語言，而不是沉重的心理標籤。<br><br>
+          <strong>執行：</strong>IG Stories 互動貼圖讓用戶標記今天的焦慮指數；奈米KOL（1萬以下粉絲，低成本）示範 1分鐘打卡流程；鼓勵用戶以 <em>#今天我幾分</em> 分享手作包開箱。<br><br>
+          <strong>轉換：</strong>導向 App 預註冊與 LINE OA，領取「5分鐘避難所入門配方」。
+        </div>
+      </div>
+      <div class="camp-card">
+        <div class="camp-num">02</div>
+        <div class="camp-title">「5分鐘避難所」<br>療癒短影片系列</div>
+        <div class="camp-body">
+          <strong>核心：</strong>用每週一支 Reels 教用戶完成一個小型情緒避難儀式。<br><br>
+          <strong>內容模板：</strong>護理師溫柔開場 → App 情緒選擇 → 3-3-3 呼吸 → 精油嗅吸 → ASMR 手作 → 一句自我同理話語收束。<br><br>
+          <strong>延伸：</strong>LINE 每週三推送「療癒小提醒」，引導用戶回到 App 打卡。
+        </div>
+      </div>
+      <div class="camp-card">
+        <div class="camp-num">03</div>
+        <div class="camp-title">「情緒急救聯名禮盒」<br>Pre-launch</div>
+        <div class="camp-body">
+          <strong>核心：</strong>先讓市場購買一個具體可觸摸的「情緒急救手作包」，再回流 App。<br><br>
+          <strong>執行：</strong>限量預購；App 預註冊換限定配方解鎖；與台灣本土植物品牌、文具品牌或插畫創作者聯名（資源交換，零預算）。<br><br>
+          <strong>轉換：</strong>禮盒內放 QR code，導向 App 下載、LINE OA 加入、首次打卡與芳療師諮詢券。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 第八章 -->
+<section class="chapter" id="ch8">
+  <div class="ch-header" onclick="toggleChapter(this)">
+    <div class="ch-title"><span class="ch-num">8</span>競品定價參考清單</div>
+    <span class="ch-toggle open">▼</span>
+  </div>
+  <div class="ch-body">
+    <p>以下所有定價來自台灣 App Store（2026年7月），標示「推測」者為非官方確認資料。</p>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>類型</th><th>品牌</th><th>免費？</th><th>月費</th><th>年費</th><th>連結</th></tr></thead>
+      <tbody>
+        <tr><td>國際冥想</td><td><strong>Calm</strong></td><td>✅ 免費下載</td><td>—</td><td>≈NT$2,280</td><td><a href="https://apps.apple.com/tw/app/calm/id571800810" target="_blank">App Store ↗</a></td></tr>
+        <tr><td>國際冥想</td><td><strong>Headspace</strong></td><td>✅ 免費下載</td><td>NT$390</td><td>NT$2,790</td><td><a href="https://apps.apple.com/tw/app/headspace-mindful-meditation/id493145008" target="_blank">App Store ↗</a></td></tr>
+        <tr><td>冥想社群</td><td><strong>Insight Timer</strong></td><td>✅ 大部分免費</td><td>NT$320</td><td>NT$1,930</td><td><a href="https://apps.apple.com/tw/app/insight-timer-meditate-sleep/id337472899" target="_blank">App Store ↗</a></td></tr>
+        <tr><td>情緒日記</td><td><strong>Daylio</strong></td><td>✅ 免費下載</td><td>NT$149</td><td>NT$749–999</td><td><a href="https://apps.apple.com/tw/app/daylio-journal-mood-tracker/id1194023242" target="_blank">App Store ↗</a></td></tr>
+        <tr><td>AI日記</td><td><strong>Reflectly</strong></td><td>✅ 免費下載</td><td>NT$340</td><td>NT$1,350–1,990</td><td><a href="https://apps.apple.com/tw/app/reflectly-journal-ai-diary/id1241229134" target="_blank">App Store ↗</a></td></tr>
+        <tr><td>心理健康</td><td><strong>MindDoc</strong></td><td>✅ 免費下載</td><td>NT$240</td><td>NT$2,090</td><td><a href="https://apps.apple.com/tw/app/minddoc-your-mental-health/id1052216403" target="_blank">App Store ↗</a></td></tr>
+        <tr><td>情緒覺察</td><td><strong>How We Feel</strong></td><td>✅ 完全免費</td><td>—</td><td>—</td><td><a href="https://apps.apple.com/tw/app/how-we-feel/id1562527312" target="_blank">App Store ↗</a></td></tr>
+        <tr><td>白噪音冥想</td><td><strong>潮汐 Tide</strong></td><td>✅ 免費下載</td><td>NT$80–90</td><td>NT$890–1,190</td><td><a href="https://apps.apple.com/tw/app/tide-sleep-focus-meditation/id1077776989" target="_blank">App Store ↗</a></td></tr>
+        <tr><td>台灣心理平台</td><td><strong>沙發心理 Couchspace</strong></td><td>✅ 免費下載</td><td>NT$200–300（推測）</td><td>—</td><td><a href="https://www.thecouchspace.com/" target="_blank">官網 ↗</a></td></tr>
+        <tr><td>芳療訂閱盒</td><td><strong>HoHovibe 香氣月刊</strong></td><td>—</td><td>NT$880–1,280</td><td>—</td><td><a href="https://www.pinkoi.com/store/hohosensory" target="_blank">Pinkoi ↗</a></td></tr>
+        <tr><td>情緒工具包</td><td><strong>雞湯來了情緒急救包</strong></td><td>—</td><td>—</td><td>NT$180–680/套</td><td><a href="https://www.chickensoupfamily.com/" target="_blank">品牌官網 ↗</a></td></tr>
+        <tr><td>花精產品</td><td><strong>芳療家急救花精</strong></td><td>—</td><td>—</td><td>NT$250/10mL</td><td><a href="https://aromahealer.com.tw/" target="_blank">品牌官網 ↗</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="small">⚠ 標示「推測」者不得作為確定市場價格對外宣稱。價格數據採集自2026年7月，可能隨平台更新變動。</p>
+  </div>
+</section>
+
+<!-- 第九章 -->
+<section class="chapter" id="ch9">
+  <div class="ch-header" onclick="toggleChapter(this)">
+    <div class="ch-title"><span class="ch-num">9</span>訂閱制產品設計建議</div>
+    <span class="ch-toggle open">▼</span>
+  </div>
+  <div class="ch-body">
+    <p>建議採三層訂閱架構，把免費 App、實體商品、芳療師服務與 B2B2C 合作串成階梯式收入模型。</p>
+    <div class="sub-grid">
+      <div class="sub-card">
+        <div class="sub-tier">層級 1 · 實體訂閱</div>
+        <div class="sub-name">🌿 芳草包月</div>
+        <div class="sub-price">NT$880–1,280<span>/月（建議）</span></div>
+        <div class="sub-list">
+          ✦ 每月主題精油補充瓶<br>
+          ✦ 當月手作材料包<br>
+          ✦ 芳療指南小冊<br>
+          ✦ App 限定季節配方解鎖
+        </div>
+        <div class="sub-tag">對標 HoHovibe 香氣月刊價格帶，建立穩定實體回購收入</div>
+      </div>
+      <div class="sub-card">
+        <div class="sub-tier">層級 2 · App 訂閱</div>
+        <div class="sub-name">💨 深呼吸+</div>
+        <div class="sub-price">NT$149–299<span>/月（建議）</span></div>
+        <div class="sub-list">
+          ✦ 詳細情緒分析月報<br>
+          ✦ 進階芳療配方庫<br>
+          ✦ 雲端備份與跨裝置同步<br>
+          ✦ 廣告移除<br>
+          ✦ 精油收藏冊完整解鎖
+        </div>
+        <div class="sub-tag">低門檻 App 內訂閱，承接高頻使用者，對標 Daylio 價格帶</div>
+      </div>
+      <div class="sub-card">
+        <div class="sub-tier">層級 3 · 高端服務</div>
+        <div class="sub-name">🌙 天瑪陪伴計劃</div>
+        <div class="sub-price">NT$1,200–1,800<span>/月（建議）</span></div>
+        <div class="sub-list">
+          ✦ 每月1次30分鐘芳療師線上諮詢<br>
+          ✦ App 情緒紀錄整合分析<br>
+          ✦ 專屬精油調配建議<br>
+          ✦ LINE 1:1 療癒支援
+        </div>
+        <div class="sub-tag">高信任、高毛利服務，需明確界定為「芳療與生活壓力管理諮詢」（非心理治療）</div>
+      </div>
+    </div>
+    <h3>🏛️ B2B2C 合作機會</h3>
+    <p>衛福部自113年8月起擴大推動「<strong>15–45歲青壯世代心理健康支持方案</strong>」，提供每人 3 次免費心理諮商，每次最高補助 NT$1,600；截至113年底，全國有 <strong>406 家</strong>合作機構。<sup><a href="#ref27">[27]</a></sup>行政院亦核定「全民心理健康韌性計畫」，6年投入 <strong>56.3億元</strong>，其中包含「強化科技與數位心理健康基礎建設」策略方向。<sup><a href="#ref28">[28]</a></sup></p>
+    <ul>
+      <li><strong>定位切入點：</strong>以「諮商後日常自我照護工具」的角色，與心理諮商所、治療所合作推薦給個案</li>
+      <li><strong>企業 EAP 合作：</strong>隨 ESG 浪潮，企業對數位化員工協助方案需求激增</li>
+      <li><strong>學校輔導系統：</strong>學生輔導法修正後，數位輔導工具具備校園對接潛力</li>
+      <li><strong>護理師公會：</strong>護理人員職場壓力大，公會常舉辦心理韌性研習，可作為早期品牌背書管道</li>
+    </ul>
+    <div class="callout">📈 <strong>商業模型摘要：</strong>免費下載降低進入門檻 → App 訂閱建立數位收入 → 芳草包月建立實體回購 → 天瑪陪伴計劃建立高信任服務 → B2B2C 合作擴大專業場景與獲客效率。</div>
+  </div>
+</section>
+
+<!-- 資料來源 -->
+<section class="chapter" id="refs">
+  <div class="ch-header" onclick="toggleChapter(this)">
+    <div class="ch-title"><span class="ch-num">📚</span>資料來源</div>
+    <span class="ch-toggle open">▼</span>
+  </div>
+  <div class="ch-body">
+    <ol class="ref-list">
+      <li id="ref1">Grand View Research / 工商時報，全球心理健康 App 市場：<a href="https://www.ctee.com.tw/news/20260225700720-431205" target="_blank">ctee.com.tw ↗</a></li>
+      <li id="ref2">台灣精油產業年產值（業界估算）：<a href="https://www.facebook.com/wang.fu.kai.166396/posts/10212906888423611/" target="_blank">facebook.com ↗</a></li>
+      <li id="ref3">Research Nester，全球芳療市場資料：<a href="https://www.researchnester.com/tw/reports/aromatherapy-market/4260" target="_blank">researchnester.com ↗</a></li>
+      <li id="ref4">精神健康基金會 / 優活健康網，2024年精神健康指數：<a href="https://www.uho.com.tw/article-65454.html" target="_blank">uho.com.tw ↗</a></li>
+      <li id="ref5">兒福聯盟 2025 青少年情緒困擾調查：<a href="https://www.children.org.tw/publication_research/research_report/mentalhealth2025" target="_blank">children.org.tw ↗</a></li>
+      <li id="ref6">衛福部心理健康司，青壯年就醫率與常見精神疾患：<a href="https://www.mohw.gov.tw/cp-16-79408-1.html" target="_blank">mohw.gov.tw ↗</a></li>
+      <li id="ref7">LINE 2025 使用行為調查：<a href="https://today.line.me/tw/v3/article/gzKWQOG" target="_blank">line.me ↗</a></li>
+      <li id="ref8">Adapty / Vocus，iOS 訂閱營收分析：<a href="https://vocus.cc/article/69ae6773fd897800017383ff" target="_blank">vocus.cc ↗</a></li>
+      <li id="ref9">台灣 App Store 競品定價（研究調查，2026年7月）：<a href="https://apps.apple.com/tw/" target="_blank">apps.apple.com/tw ↗</a></li>
+      <li id="ref22">醫師法，全國法規資料庫：<a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=L0020001" target="_blank">law.moj.gov.tw ↗</a></li>
+      <li id="ref23">醫療器材管理法，全國法規資料庫：<a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=L0030093" target="_blank">law.moj.gov.tw ↗</a></li>
+      <li id="ref24">食品及相關產品廣告涉及醫療效能認定準則：<a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0040140" target="_blank">law.moj.gov.tw ↗</a></li>
+      <li id="ref25">化粧品廣告涉及醫療效能認定準則：<a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=L0030096" target="_blank">law.moj.gov.tw ↗</a></li>
+      <li id="ref26">個人資料保護法，全國法規資料庫：<a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=I0050021" target="_blank">law.moj.gov.tw ↗</a></li>
+      <li id="ref27">衛福部心理健康司，青壯世代心理健康支持方案：<a href="https://dep.mohw.gov.tw/DOMHAOH/cp-502-85046-107.html" target="_blank">mohw.gov.tw ↗</a>｜<a href="https://sps.mohw.gov.tw/mhs" target="_blank">方案官網 ↗</a></li>
+      <li id="ref28">行政院全民心理健康韌性計畫：<a href="https://www.ey.gov.tw/Page/5A8A0CB5B41DA11E/8e8835ef-5b07-4e02-8b19-906b6964a10c" target="_blank">ey.gov.tw ↗</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<!-- 回頂部按鈕 -->
+<button id="totop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到頂部">↑</button>
+
+<script>
+// 展開收合章節
+function toggleChapter(header){
+  const body = header.nextElementSibling;
+  const toggle = header.querySelector('.ch-toggle');
+  if(body.style.maxHeight){
+    body.style.maxHeight = null;
+    toggle.classList.remove('open');
+  } else {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    toggle.classList.add('open');
+  }
+}
+// 初始化所有章節為展開
+document.querySelectorAll('.ch-body').forEach(b=>{
+  b.style.maxHeight = b.scrollHeight + 'px';
+});
+
+// 競品篩選
+function filterTable(type, btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#comp-table tbody tr').forEach(tr=>{
+    if(type==='all') tr.classList.remove('hidden');
+    else tr.classList.toggle('hidden', !tr.dataset.type.includes(type));
+  });
+}
+
+// 導覽高亮
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(a=>{
+        a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id);
+      });
+    }
+  });
+},{rootMargin:'-60px 0px -60% 0px'});
+sections.forEach(s=>observer.observe(s));
+
+// 進度條
+window.addEventListener('scroll',()=>{
+  const prog = document.getElementById('progress');
+  const totopBtn = document.getElementById('totop');
+  const pct = (window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  prog.style.width = pct+'%';
+  totopBtn.classList.toggle('show', window.scrollY>400);
+});
+
+// 手機選單
+function toggleMenu(){
+  const m = document.getElementById('mobile-menu');
+  m.style.display = m.style.display==='block' ? 'none' : 'block';
+}
+function closeMenu(){
+  document.getElementById('mobile-menu').style.display='none';
+}
+</script>
+</body>
+</html>
