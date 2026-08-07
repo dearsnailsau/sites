@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>護理芳療師：個人 IP 出書戰略報告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #fdfbf7;
+            color: #4a4238;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        .gradient-border {
+            border-image: linear-gradient(to right, #a7c080, #e6b9a6) 1;
+        }
+
+        .nav-active {
+            color: #8fa172;
+            border-bottom: 2px solid #8fa172;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* 自定義滾動條 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4ccbd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- 導覽列 -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-xl font-bold text-stone-700 tracking-wider">護理芳療師 <span class="text-stone-400 font-light">| IP 戰略</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="#home" class="nav-link nav-active">核心定位</a>
+                    <a href="#market" class="nav-link text-stone-500 hover:text-stone-700">市場洞察</a>
+                    <a href="#proposal" class="nav-link text-stone-500 hover:text-stone-700">書籍企劃</a>
+                    <a href="#monetization" class="nav-link text-stone-500 hover:text-stone-700">IP 藍圖</a>
+                </div>
+                <div class="md:hidden">
+                    <span class="text-2xl cursor-pointer" onclick="toggleMenu()">☰</span>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b px-4 py-4 space-y-2">
+            <a href="#home" class="block py-2 text-stone-600">核心定位</a>
+            <a href="#market" class="block py-2 text-stone-600">市場洞察</a>
+            <a href="#proposal" class="block py-2 text-stone-600">書籍企劃</a>
+            <a href="#monetization" class="block py-2 text-stone-600">IP 藍圖</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="relative pt-20 pb-16 px-4">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-block px-4 py-1 mb-4 text-xs font-semibold tracking-widest text-stone-500 uppercase bg-stone-100 rounded-full">
+                Professional IP Strategy 2026
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-stone-800 mb-6 leading-tight">
+                以護理的嚴謹，守住芳療的安全<br>
+                <span class="text-stone-500 font-medium">用芳香的溫柔，補回照顧者被忽略的自己</span>
+            </h1>
+            <p class="text-lg text-stone-600 mb-10 max-w-2xl mx-auto">
+                這不僅是一本實體書，更是一個專為台灣 90 萬家庭照顧者打造的溫柔防線。透過「雙專業交集」，建立起無可取代的個人品牌權威。
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#proposal" class="bg-stone-800 text-white px-8 py-3 rounded-lg hover:bg-stone-700 transition">探索書籍題材</a>
+                <a href="#market" class="border border-stone-300 text-stone-600 px-8 py-3 rounded-lg hover:bg-stone-50 transition">市場數據分析</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 市場分析 Section -->
+    <section id="market" class="py-20 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-stone-800">市場定位：從「病患」轉向「照顧者」</h2>
+                <div class="w-16 h-1 bg-stone-300 mx-auto mt-4"></div>
+                <p class="mt-6 text-stone-600 max-w-3xl mx-auto">
+                    目前的芳療出版市場多聚焦於精油百科或病患護理。在台灣邁入超高齡社會的節點，針對「照顧者自我療癒」的內容幾乎是空白的藍海。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <h3 class="text-xl font-bold text-stone-700 mb-4">出版市場與需求缺口</h3>
+                    <p class="text-sm text-stone-500 mb-6 italic">數據顯示：現有芳療書僅 5% 專注於照顧者的情緒支持，但台灣有超過 70% 的家庭照顧者感到高度心理壓力。</p>
+                    <div class="chart-container">
+                        <canvas id="marketGapChart"></canvas>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-stone-800 text-white rounded-full flex items-center justify-center flex-shrink-0">1</div>
+                        <div>
+                            <h4 class="font-bold text-lg text-stone-800">主流市場：工具書飽和</h4>
+                            <p class="text-stone-600">精油化學、配方辭典已由權威翻譯書盤據。DIY 手作書籍競爭激烈，難以突顯專業護理背景。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-stone-800 text-white rounded-full flex items-center justify-center flex-shrink-0">2</div>
+                        <div>
+                            <h4 class="font-bold text-lg text-stone-800">藍海賽道：敘事實證</h4>
+                            <p class="text-stone-600">以護理師視角切入，講述臨床真實故事，提供心理授權，讓讀者「被允許照顧自己」。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-stone-800 text-white rounded-full flex items-center justify-center flex-shrink-0">3</div>
+                        <div>
+                            <h4 class="font-bold text-lg text-stone-800">IP 壁壘：雙專業背書</h4>
+                            <p class="text-stone-600">「護理師」代表安全與嚴謹，「芳療師」代表溫柔與情緒解方。這是抄襲者無法複製的生命經驗。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 讀者畫像 Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="bg-stone-800 rounded-3xl p-8 md:p-16 text-white overflow-hidden relative">
+                <div class="grid md:grid-cols-2 gap-12 relative z-10">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-6">核心讀者是誰？</h2>
+                        <p class="text-stone-300 mb-8">
+                            她們是台灣長照體系中「隱形的病患」。平均照顧年數長達 8-13 年，每日勞動超過 11 小時，且多數沒有替手。
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between border-b border-stone-600 pb-2">
+                                <span>女性比例</span>
+                                <span class="text-stone-400">約 60%-70%</span>
+                            </div>
+                            <div class="flex items-center justify-between border-b border-stone-600 pb-2">
+                                <span>集中年齡層</span>
+                                <span class="text-stone-400">45 - 65 歲 (三明治世代)</span>
+                            </div>
+                            <div class="flex items-center justify-between border-b border-stone-600 pb-2">
+                                <span>主要病徵</span>
+                                <span class="text-stone-400">睡眠障礙、焦慮、腰痠背痛</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
+                        <h3 class="text-xl font-bold mb-4">她們的深層痛點 (Inside Out)</h3>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-white/5 rounded-lg border-l-4 border-stone-300">
+                                <p class="text-sm italic">「我覺得我做得還不夠好...」</p>
+                                <p class="text-xs text-stone-400 mt-2">— 被傳統孝道綁架的罪惡感</p>
+                            </div>
+                            <div class="p-4 bg-white/5 rounded-lg border-l-4 border-stone-300">
+                                <p class="text-sm italic">「我連喘口氣的時間都沒有。」</p>
+                                <p class="text-xs text-stone-400 mt-2">— 極度碎片化的生活與自我消失</p>
+                            </div>
+                            <div class="p-4 bg-white/5 rounded-lg border-l-4 border-stone-300">
+                                <p class="text-sm italic">「明天還會更糟嗎？」</p>
+                                <p class="text-xs text-stone-400 mt-2">— 面對不可逆衰退的預期性悲傷</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 書籍企劃 Section -->
+    <section id="proposal" class="py-20 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-stone-800">出書題材深度評估</h2>
+                <p class="mt-4 text-stone-600">針對您的五個構想進行市場與權威度綜合評估</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- 構想 4 - 推薦 -->
+                <div class="md:col-span-2 bg-white p-8 rounded-2xl border-2 border-stone-800 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-stone-800 text-white px-4 py-1 text-xs font-bold uppercase tracking-widest">
+                        推薦首選
+                    </div>
+                    <h3 class="text-2xl font-bold text-stone-800 mb-4">構想 4：醫護角度幫助照顧者</h3>
+                    <p class="text-stone-600 mb-6 font-medium">利用芳療輕鬆渡過困難的日子 —— 建立「芳香共照」的喘息處方。</p>
+                    <div class="grid sm:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <h4 class="text-sm font-bold text-stone-500 uppercase mb-2">優勢評核</h4>
+                            <ul class="text-sm text-stone-600 space-y-2">
+                                <li>✅ 社會痛點強，易獲媒體關注</li>
+                                <li>✅ 完美融合護理與芳療雙專業</li>
+                                <li>✅ 易對接長照、社福等 B2B 合作</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-stone-500 uppercase mb-2">讀者益處</h4>
+                            <ul class="text-sm text-stone-600 space-y-2">
+                                <li>📍 獲得「可以愛自己」的心理授權</li>
+                                <li>📍 學會 15 分鐘的微型紓壓儀式</li>
+                                <li>📍 辨識照顧者倦怠的科學警訊</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded-xl border border-stone-200">
+                        <h4 class="text-sm font-bold text-stone-800 mb-2">建議書名：</h4>
+                        <p class="text-xl font-bold text-stone-700 italic">《照顧，不孤單：資深護理芳療師的喘息處方，用香氣接住瀕臨崩潰的自己》</p>
+                    </div>
+                </div>
+
+                <!-- 其他構想評估 -->
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm opacity-70">
+                        <h4 class="font-bold text-stone-700">構想 1: IP書黃金三角</h4>
+                        <p class="text-xs text-stone-500 mt-1">此為商業模式，適合內部規劃而非大眾書名。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm opacity-70">
+                        <h4 class="font-bold text-stone-700">構想 2: 芳療師育成</h4>
+                        <p class="text-xs text-stone-500 mt-1">受眾太窄，僅限從業者，難以建立廣泛影響力。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm opacity-70">
+                        <h4 class="font-bold text-stone-700">構想 3: DIY 芳療</h4>
+                        <p class="text-xs text-stone-500 mt-1">市場極度飽和，難以突顯您的專業資歷壁壘。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 變現藍圖 Section -->
+    <section id="monetization" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-stone-800">IP 書黃金三角：變現藍圖</h2>
+                <p class="mt-4 text-stone-600">出版實體書只是開始，它是打通後續服務的信任載體。</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 書籍 -->
+                <div class="bg-white border border-stone-200 p-8 rounded-2xl flex flex-col items-center text-center card-hover">
+                    <div class="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center mb-6 text-2xl">📖</div>
+                    <h3 class="text-xl font-bold mb-4">信任核心 (Trust)</h3>
+                    <p class="text-sm text-stone-500">實體書籍、POD 隨選出版、電子書、媒體曝光。作為「專家證言」與高品質名片。</p>
+                </div>
+                <!-- 課程 -->
+                <div class="bg-white border border-stone-200 p-8 rounded-2xl flex flex-col items-center text-center card-hover">
+                    <div class="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center mb-6 text-2xl">🎓</div>
+                    <h3 class="text-xl font-bold mb-4">專業延伸 (Knowledge)</h3>
+                    <p class="text-sm text-stone-500">長照芳療導師培訓、照顧者喘息工作坊、線上音頻課程（AI 輔助製作）。</p>
+                </div>
+                <!-- 產品 -->
+                <div class="bg-white border border-stone-200 p-8 rounded-2xl flex flex-col items-center text-center card-hover">
+                    <div class="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center mb-6 text-2xl">🌿</div>
+                    <h3 class="text-xl font-bold mb-4">實體轉換 (Product)</h3>
+                    <p class="text-sm text-stone-500">聯名開發紓壓滾珠、空間淨化噴霧、芳香手作材料包、B2B 長照空間擴香服務。</p>
+                </div>
+            </div>
+
+            <!-- AI 流程 -->
+            <div class="mt-16 bg-stone-800 p-8 rounded-3xl text-white">
+                <h3 class="text-xl font-bold mb-8 text-center">AI 輔助出版流程 (人機協作)</h3>
+                <div class="grid sm:grid-cols-4 gap-4 relative">
+                    <div class="flex flex-col items-center">
+                        <div class="w-8 h-8 rounded-full bg-stone-600 flex items-center justify-center mb-2 font-bold">1</div>
+                        <p class="text-xs text-stone-300">訪談與口述</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-8 h-8 rounded-full bg-stone-600 flex items-center justify-center mb-2 font-bold">2</div>
+                        <p class="text-xs text-stone-300">AI 結構化寫作</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-8 h-8 rounded-full bg-stone-600 flex items-center justify-center mb-2 font-bold">3</div>
+                        <p class="text-xs text-stone-300">專業人工校閱</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-8 h-8 rounded-full bg-stone-600 flex items-center justify-center mb-2 font-bold">4</div>
+                        <p class="text-xs text-stone-300">POD 數位發行</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="bg-white py-12 border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-stone-400 text-sm mb-4">© 2026 Nursing Aromatherapist IP Strategy Group</p>
+            <p class="text-stone-300 text-xs italic">此報告基於台灣長照社會現狀與專業分析，旨在為資深護理芳療師建立無可取代的專業地位。</p>
+        </div>
+    </footer>
+
+    <script>
+        // 初始化圖表
+        function initCharts() {
+            const ctx = document.getElementById('marketGapChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['芳療百科/配方', '美容手作/DIY', '病患生理護理', '照顧者心理紓壓'],
+                    datasets: [{
+                        label: '現有書籍分布 (%)',
+                        data: [45, 30, 20, 5],
+                        backgroundColor: '#d4ccbd',
+                        borderColor: '#4a4238',
+                        borderWidth: 0,
+                        borderRadius: 5
+                    },
+                    {
+                        label: '市場潛在需求 (%)',
+                        data: [15, 20, 25, 80],
+                        backgroundColor: '#8fa172',
+                        borderColor: '#4a4238',
+                        borderWidth: 0,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            grid: { display: false }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: {
+                                callback: function(val, index) {
+                                    let label = this.getLabelForValue(val);
+                                    if (label.length > 8) return label.substr(0, 8) + '...';
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: { boxWidth: 12, font: { size: 10 } }
+                        },
+                        tooltip: {
+                            enabled: true,
+                            padding: 10
+                        }
+                    }
+                }
+            });
+        }
+
+        // 行動裝置選單
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // 導航連結啟動狀態
+        window.addEventListener('scroll', () => {
+            const sections = ['home', 'market', 'proposal', 'monetization'];
+            let current = 'home';
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                if (window.scrollY >= element.offsetTop - 100) {
+                    current = section;
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('nav-active');
+                link.classList.add('text-stone-500');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('nav-active');
+                    link.classList.remove('text-stone-500');
+                }
+            });
+        });
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            initCharts();
+        });
+    </script>
+</body>
+</html>
