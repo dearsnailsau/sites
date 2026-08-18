@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="zh-HK" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香港東芝物流有限公司 - 營運現況與策略分析互動報告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 360px;
+            }
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+
+    <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md text-white border-b border-slate-800 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl">📦</span>
+                    <div>
+                        <h1 class="font-bold text-base sm:text-lg leading-tight text-white">香港東芝物流</h1>
+                        <p class="text-xs text-slate-400">Toshiba Logistics HK - 獲利增長策略儀表板</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-1 lg:space-x-4 text-xs lg:text-sm font-medium">
+                    <a href="#profile" class="px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white transition">企業現況</a>
+                    <a href="#macro" class="px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white transition">宏觀環境</a>
+                    <a href="#swot" class="px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white transition">SWOT診斷</a>
+                    <a href="#strategies" class="px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white transition">開源與節流</a>
+                    <a href="#financials" class="px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white transition">財務預測與試算</a>
+                    <a href="#roadmap" class="px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white transition">實施藍圖</a>
+                </nav>
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-slate-300 hover:text-white p-2 rounded-md bg-slate-800">
+                        ☰
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-4 space-y-1 text-sm">
+            <a href="#profile" class="mobile-nav-link block px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300">企業現況與資產</a>
+            <a href="#macro" class="mobile-nav-link block px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300">宏觀經濟與行業環境</a>
+            <a href="#swot" class="mobile-nav-link block px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300">SWOT優劣勢診斷</a>
+            <a href="#strategies" class="mobile-nav-link block px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300">開源與節流策略</a>
+            <a href="#financials" class="mobile-nav-link block px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300">三年財務預測與試算</a>
+            <a href="#roadmap" class="mobile-nav-link block px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300">實施階段藍圖</a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <section class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+            <div class="relative z-10 space-y-4 max-w-4xl">
+                <div class="inline-flex items-center space-x-2 bg-indigo-500/20 border border-indigo-400/30 px-3 py-1 rounded-full text-xs font-semibold text-indigo-300">
+                    <span>💡 戰略轉型報告</span>
+                    <span>•</span>
+                    <span>SBS 東芝物流集團核心節點</span>
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+                    香港東芝物流營運現況剖析<br class="hidden sm:block"/>與高獲利增長策略指南
+                </h2>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    本報告深入分析香港東芝物流有限公司（Toshiba Logistics Hong Kong）之資源資產、大灣區機場物流趨勢與營運瓶頸。透過系統化推動「三大開源」與「三大節流」策略，預計可在三年內實現淨利潤從估計 367.4 萬港元增長至 2,162.7 萬港元的跨越式轉型。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 relative z-10">
+                <div class="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl p-4 text-center">
+                    <p class="text-xs text-slate-300 font-medium">預估三年後年營收</p>
+                    <p class="text-xl sm:text-2xl font-bold text-emerald-400 mt-1">1.82 億 <span class="text-xs font-normal">港元*</span></p>
+                    <p class="text-[10px] text-slate-400 mt-1">較現況成長 +34.8%</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl p-4 text-center">
+                    <p class="text-xs text-slate-300 font-medium">息稅前利潤率 (EBIT)</p>
+                    <p class="text-xl sm:text-2xl font-bold text-indigo-300 mt-1">14.2% <span class="text-xs font-normal">*</span></p>
+                    <p class="text-[10px] text-slate-400 mt-1">現況估計僅 3.3%</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl p-4 text-center">
+                    <p class="text-xs text-slate-300 font-medium">預估三年後淨利潤</p>
+                    <p class="text-xl sm:text-2xl font-bold text-amber-300 mt-1">2,162.7 萬 <span class="text-xs font-normal">港元*</span></p>
+                    <p class="text-[10px] text-slate-400 mt-1">增長近 5.9 倍</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl p-4 text-center">
+                    <p class="text-xs text-slate-300 font-medium">策略自籌資本支出</p>
+                    <p class="text-xl sm:text-2xl font-bold text-sky-300 mt-1">120-140 萬 <span class="text-xs font-normal">港元*</span></p>
+                    <p class="text-[10px] text-slate-400 mt-1">搭配政府補助200萬</p>
+                </div>
+            </div>
+            <p class="text-[11px] text-slate-400 text-right mt-3 italic">* 註：本報告所有財務指標與效益預測均為基於行業基準與企業規模測算之估計數據。</p>
+        </section>
+
+        <section id="profile" class="space-y-6">
+            <div class="border-l-4 border-indigo-600 pl-4">
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-900">1. 企業現況與營運架構剖析</h2>
+                <p class="text-slate-600 text-sm mt-1">
+                    介紹香港東芝物流有限公司的股權背景、資質認證、物流基礎設施配置以及在中港大灣區供應鏈中的戰略定位。
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 space-y-6">
+                <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+                    香港東芝物流有限公司成立於 2003 年 10 月，法定註冊資本為 340 萬港元，現為日本東證主板上市公司 SBS 控股集團（SBS Holdings, Inc.）旗下 SBS 東芝物流株式會社全資持有的海外核心子公司。公司總部設於九龍旺角新世紀廣場，營運架構主要依托新界兩大倉儲據點及中港跨境雙牌車隊，扮演日系高科技電子產品與精密設備在大灣區的物流轉運樞紐。
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 hover:border-indigo-400 transition">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <span class="p-2 bg-indigo-100 text-indigo-700 rounded-lg text-lg">🏛️</span>
+                            <h3 class="font-bold text-slate-900 text-sm">股權與資質認證</h3>
+                        </div>
+                        <ul class="text-xs text-slate-600 space-y-2">
+                            <li><strong class="text-slate-800">註冊資本：</strong> 340 萬港元</li>
+                            <li><strong class="text-slate-800">母集團：</strong> 日本 SBS 東芝物流 (100% 控股)</li>
+                            <li><strong class="text-slate-800">產業資質：</strong> HAFFA 會員、ISO 9001:2015 認證</li>
+                            <li><strong class="text-slate-800">核心技術：</strong> 工業工程級防震/防潮包裝技術</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 hover:border-indigo-400 transition">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <span class="p-2 bg-indigo-100 text-indigo-700 rounded-lg text-lg">🏬</span>
+                            <h3 class="font-bold text-slate-900 text-sm">兩大倉儲據點</h3>
+                        </div>
+                        <ul class="text-xs text-slate-600 space-y-2">
+                            <li><strong class="text-slate-800">屯門 YKK 大廈二期：</strong> 分佈於 9/F, 11/F, 14/F, 16/F (多層工廈倉)</li>
+                            <li><strong class="text-slate-800">火炭華潤冷倉：</strong> 沙田山尾街 1/F 綜合物流設施</li>
+                            <li><strong class="text-slate-800">特色系統：</strong> 溫濕度監控、WMS 條碼/QR Code、保稅與非保稅管理</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 hover:border-indigo-400 transition">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <span class="p-2 bg-indigo-100 text-indigo-700 rounded-lg text-lg">🚛</span>
+                            <h3 class="font-bold text-slate-900 text-sm">運力與網絡服務</h3>
+                        </div>
+                        <ul class="text-xs text-slate-600 space-y-2">
+                            <li><strong class="text-slate-800">跨境車隊：</strong> 配置 3t、5t、8t、10t、12t 噸車及貨櫃拖頭</li>
+                            <li><strong class="text-slate-800">核心業務：</strong> 海空貨代、買家集運 (BCS)、中港陸運、項目物流</li>
+                            <li><strong class="text-slate-800">母集團網絡：</strong> 全球 12 國、超 40 個海外營運據點</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="macro" class="space-y-6">
+            <div class="border-l-4 border-indigo-600 pl-4">
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-900">2. 宏觀經濟與行業環境變遷</h2>
+                <p class="text-slate-600 text-sm mt-1">
+                    分析香港作為國際航空貨運樞紐的最新數據、工業物業租金回調走勢，以及特區政府資助政策。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <div class="lg:col-span-6 space-y-4">
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">✈️</span>
+                            <h3 class="font-bold text-slate-900 text-base">香港國際機場 (HKIA) 空運樞紐</h3>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            儘管低端製造業外移東南亞，香港高價值產品空運優勢依然穩固。2024 年機場貨運量達 4.9 百萬公噸 (年增 3.3%)，2025 年進一步攀升至 5.07 百萬公噸 (年增 2.7%)，穩居全球最繁忙貨運機場首位。
+                        </p>
+                        <div class="p-3 bg-indigo-50 border border-indigo-100 rounded-lg text-xs text-indigo-900 font-medium">
+                            💡 <strong>關鍵機遇：</strong> 三跑道系統投入營運及「東莞—香港國際機場物流園」海空聯運常態化，為高價值、時效敏感貨物帶來強勁支撐。
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">🏢</span>
+                            <h3 class="font-bold text-slate-900 text-base">工廈租金走勢與空置率</h3>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            2024-2025 年香港工業物業租金面臨調整。現代物流中心月租約 HK$17.1-17.8/sqft，葵涌區工廈約 HK$14.5/sqft，火炭約 HK$13.0/sqft，屯門區工廈租金回落至 HK$10.6-11.1/sqft，空置率升至 8%-9.5%。
+                        </p>
+                        <div class="p-3 bg-amber-50 border border-amber-100 rounded-lg text-xs text-amber-900 font-medium">
+                            💡 <strong>談判窗口：</strong> 租金回調與業主議價空間擴大，為第三方物流企業（3PL）提供了租約重談與樓層空間整併的最佳時機。
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">🏛️</span>
+                            <h3 class="font-bold text-slate-900 text-base">政府 TPLSP 專項資助計劃</h3>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            香港運輸及物流局公佈《現代物流發展行動綱要》。「第三方物流服務供應商資助先導計劃」（TPLSP）累計資助上限提升至 200 萬港元，政府與企業配對比例高達 2:1。
+                        </p>
+                        <div class="p-3 bg-emerald-50 border border-emerald-100 rounded-lg text-xs text-emerald-900 font-medium">
+                            💡 <strong>槓桿效益：</strong> 政府負擔最高 2/3 項目成本，支持引進 AI-WMS/TMS、IoT 及綠色包裝技術，極大幅度降低升級自籌門檻。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-slate-900 text-base">📊 空運貨運量與工廈租金趨勢比較</h3>
+                        <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Chart.js 雙軸圖</span>
+                    </div>
+                    <p class="text-xs text-slate-500">
+                        下圖展示香港國際機場貨運量與屯門區工廈租金（HK$/sqft）之走勢對比，凸顯「航空需求強勁」與「租金成本下行」形成的有利剪刀差。
+                    </p>
+
+                    <div class="chart-container">
+                        <canvas id="macroChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="swot" class="space-y-6">
+            <div class="border-l-4 border-indigo-600 pl-4">
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-900">3. 企業競爭優勢與劣勢深度診斷</h2>
+                <p class="text-slate-600 text-sm mt-1">
+                    系統化剖析香港東芝物流的核心競爭壁壘與現行營運瓶頸，為後續策略制定提供事實依據。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-2xl border-t-4 border-emerald-500 shadow-sm border-x border-b border-slate-200 p-6 space-y-4">
+                    <div class="flex items-center space-x-2 text-emerald-700 font-bold text-base">
+                        <span>💪</span>
+                        <h3>核心競爭優勢 (Strengths)</h3>
+                    </div>
+                    <ul class="space-y-3 text-xs sm:text-sm text-slate-700">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-emerald-500 font-bold">✓</span>
+                            <span><strong>日系頂級包裝與工程防護技術：</strong> 母集團 SBS 東芝物流連續 22 年榮獲日本包裝大賽（Japan Packaging Contest）工業包裝大獎，於半導體設備與精密儀器處理擁有極低貨損率與技術壁壘。</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-emerald-500 font-bold">✓</span>
+                            <span><strong>全球 40+ 據點與買家集運 (BCS) 實力：</strong> 結合跨國多式聯運與混載裝箱（Mix-load）演算法，能為國際買家提供最佳裝載率與端到端供應鏈方案。</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-emerald-500 font-bold">✓</span>
+                            <span><strong>自主跨境雙牌車隊與口岸走廊：</strong> 擁有 3 噸至 12 噸及拖頭車隊，能實現珠三角製造基地與香港機場/碼頭的靈活越庫（Cross-docking）與快速通關。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-2xl border-t-4 border-rose-500 shadow-sm border-x border-b border-slate-200 p-6 space-y-4">
+                    <div class="flex items-center space-x-2 text-rose-700 font-bold text-base">
+                        <span>⚠️</span>
+                        <h3>營運潛在劣勢 (Weaknesses)</h3>
+                    </div>
+                    <ul class="space-y-3 text-xs sm:text-sm text-slate-700">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-rose-500 font-bold">✗</span>
+                            <span><strong>屯門倉四層垂直分佈瓶頸：</strong> 屯門 YKK 倉庫分散於 9/F、11/F、14/F、16/F，極度依賴大廈公用載貨升降機，產生嚴重重複搬運（Double-handling）工時損耗。</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-rose-500 font-bold">✗</span>
+                            <span><strong>客戶群過度集中於傳統電子業：</strong> 歷史業務深度綁定東芝體系與消費電子供應鏈，當電子產品週期下行時，吞吐量與利潤易受連帶衝擊。</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-rose-500 font-bold">✗</span>
+                            <span><strong>作業依賴熟練人工與高勞動密度：</strong> 揀貨打板與車輛排程重度依賴現場經驗，在香港勞工短缺與薪資上升背景下，毛利率遭剛性擠壓。</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="strategies" class="space-y-6">
+            <div class="border-l-4 border-indigo-600 pl-4">
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-900">4. 獲利增長策略：三大開源與三大節流</h2>
+                <p class="text-slate-600 text-sm mt-1">
+                    針對優劣勢診斷所規劃之具體可行策略，包含財務預估效益與實施機制。（點擊頁籤切換開源與節流）
+                </p>
+            </div>
+
+            <div class="flex border-b border-slate-200 space-x-4">
+                <button id="tabRevenue" onclick="switchStrategyTab('revenue')" class="pb-3 text-sm font-bold border-b-2 border-indigo-600 text-indigo-600 px-2 transition">
+                    📈 三大開源策略 (+3,100萬~5,000萬營收*)
+                </button>
+                <button id="tabCost" onclick="switchStrategyTab('cost')" class="pb-3 text-sm font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-800 px-2 transition">
+                    ✂️ 三大節流策略 (年省540萬~840萬成本*)
+                </button>
+            </div>
+
+            <div id="revenueSection" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between hover:shadow-md transition">
+                        <div class="space-y-3">
+                            <div class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-full">
+                                方案一：高毛利生醫物流
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-base">醫療器械與冷鏈生醫專案物流</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                結合母集團收購「丸加運輸倉庫」的高精醫療設備經驗與 HKIA CEIV 醫藥冷鏈認證，將火炭倉庫部分區域升級為符合 GDP 標準的恆溫恆濕醫療專區，服務手術機器人、IVD 試劑保稅暫存與無震動運輸。
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 space-y-2 text-xs">
+                            <div class="flex justify-between"><span class="text-slate-500">預估年新增營收*:</span> <span class="font-bold text-slate-800">1,200萬 – 1,800萬 港元</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">預估毛利率區間*:</span> <span class="font-bold text-emerald-600">22% – 28%</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">預估年毛利貢獻*:</span> <span class="font-bold text-emerald-700">260萬 – 500萬 港元</span></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between hover:shadow-md transition">
+                        <div class="space-y-3">
+                            <div class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-full">
+                                方案二：跨境電商 BCS 2.0
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-base">大灣區「海空/陸空聯運」集運中心</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                對接「東莞—香港機場物流園」海空聯運體系，利用屯門倉庫鄰近深圳灣與港珠澳大橋優勢，為華南品牌出海企業（高單價 3C、智能硬件）提供集中質檢、自動重貼標籤、二次包裝及混載打板高附加值服務。
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 space-y-2 text-xs">
+                            <div class="flex justify-between"><span class="text-slate-500">預估年新增營收*:</span> <span class="font-bold text-slate-800">1,500萬 – 2,500萬 港元</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">預估毛利率區間*:</span> <span class="font-bold text-emerald-600">16% – 20%</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">預估年毛利貢獻*:</span> <span class="font-bold text-emerald-700">240萬 – 500萬 港元</span></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between hover:shadow-md transition">
+                        <div class="space-y-3">
+                            <div class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-full">
+                                方案三：綠色包裝 4PL
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-base">綠色循環包裝與 ESG 減碳顧問</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                變現日本母公司 22 年包裝大賽獲獎技術，設立「供應鏈工程與綠色包裝諮詢部」，為外資製造商提供 4PL 包裝減量化設計、防震優化與裝載率計算諮詢，協助客戶達成 Scope 3 供應鏈減碳。
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 space-y-2 text-xs">
+                            <div class="flex justify-between"><span class="text-slate-500">預估年新增營收*:</span> <span class="font-bold text-slate-800">400萬 – 700萬 港元</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">預估毛利率區間*:</span> <span class="font-bold text-emerald-600">40% – 50%</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">預估年毛利貢獻*:</span> <span class="font-bold text-emerald-700">160萬 – 350萬 港元</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 rounded-xl p-4 text-white text-xs sm:text-sm flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div>
+                        <span class="font-bold text-emerald-400">📈 開源策略小結：</span>
+                        <span>全面落地後，預計每年可新增總營收 <strong class="text-white">3,100萬 - 5,000萬 港元*</strong></span>
+                    </div>
+                    <div class="bg-emerald-500/20 border border-emerald-400/30 px-3 py-1.5 rounded-lg text-emerald-300 font-bold whitespace-nowrap">
+                        預估綜合毛利率：21% – 27%* (毛利增量 660萬–1,350萬)
+                    </div>
+                </div>
+            </div>
+
+            <div id="costSection" class="space-y-6 hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between hover:shadow-md transition">
+                        <div class="space-y-3">
+                            <div class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-full">
+                                方案一：倉儲重組談判
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-base">屯門倉樓層整併與租約重談</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                把握屯門工廈租金回落至 HK$10.6-11.1/sqft 機遇，向業主申請將 YKK 大廈分散的 4 個樓層整併為 2 個相鄰樓層，消除垂直升降機等待工時，並爭取 8%-12% 租金減讓或轉移部分低週轉貨至平面倉。
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 space-y-2 text-xs">
+                            <div class="flex justify-between"><span class="text-slate-500">自籌資本支出*:</span> <span class="font-bold text-slate-800">15萬 – 30萬 港元</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">預估年節約金額*:</span> <span class="font-bold text-amber-600">240萬 – 360萬 港元</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">預估投資回收期*:</span> <span class="font-bold text-slate-800">1 – 2 個月</span></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between hover:shadow-md transition">
+                        <div class="space-y-3">
+                            <div class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-full">
+                                方案二：TPLSP 智慧升級
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-base">政府配對導入 AI-WMS/TMS</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                申請政府 TPLSP 最高 200 萬資助（政府資助 2/3），引進 AI 動態貨位分配、智慧揀貨導引及 TMS 車輛調度演算法，並對接香港海關與 HKIA 平台實現 EDI 無紙化，削減 15%-20% 理貨文員人力。
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 space-y-2 text-xs">
+                            <div class="flex justify-between"><span class="text-slate-500">自籌資本支出*:</span> <span class="font-bold text-slate-800">100萬 港元 (資助200萬)</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">預估年節約金額*:</span> <span class="font-bold text-amber-600">180萬 – 280萬 港元</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">預估投資回收期*:</span> <span class="font-bold text-slate-800">5 – 7 個月</span></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between hover:shadow-md transition">
+                        <div class="space-y-3">
+                            <div class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-full">
+                                方案三：車隊減空載
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-base">跨境車隊拼車與消減空載率</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                建立內外雙軌調度：對內對接 SBS 華南分支（佛山、大連、理光物流）共享運力；對外承接北上返修品、過境設備與工業耗材逆向物流，將北上「回程空載率」由 45% 壓降至 15% 以下。
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 space-y-2 text-xs">
+                            <div class="flex justify-between"><span class="text-slate-500">自籌資本支出*:</span> <span class="font-bold text-slate-800">5萬 – 10萬 港元</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">預估年節約金額*:</span> <span class="font-bold text-amber-600">120萬 – 200萬 港元</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">預估投資回收期*:</span> <span class="font-bold text-slate-800">立即見效</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 rounded-xl p-4 text-white text-xs sm:text-sm flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div>
+                        <span class="font-bold text-amber-400">✂️ 節流策略小結：</span>
+                        <span>全面落實後，每年可降低營運成本 <strong class="text-white">540萬 - 840萬 港元*</strong></span>
+                    </div>
+                    <div class="bg-amber-500/20 border border-amber-400/30 px-3 py-1.5 rounded-lg text-amber-300 font-bold whitespace-nowrap">
+                        總自籌資本支出：120萬 – 140萬 港元* (回收期 3-5 個月)
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-4">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                    <h3 class="font-bold text-slate-900 text-base">📊 各項策略對年度毛利與成本節約之貢獻對比 (萬港元)</h3>
+                    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Chart.js 橫向條形圖</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="strategyChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="financials" class="space-y-6">
+            <div class="border-l-4 border-indigo-600 pl-4">
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-900">5. 三年財務預測模型與互動獲利試算器</h2>
+                <p class="text-slate-600 text-sm mt-1">
+                    展示為期三年的損益預測模型（Pro Forma Financial Projection），並提供可動態調控策略達成率的實時試算器。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-4">
+                    <h3 class="font-bold text-slate-900 text-sm sm:text-base flex items-center justify-between">
+                        <span>📊 三年損益預測表 (單位：萬港元)</span>
+                        <span class="text-[10px] text-slate-400 font-normal">稅率以16.5%計</span>
+                    </h3>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-xs text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-100 border-b border-slate-200 text-slate-700">
+                                    <th class="py-2 px-2 font-semibold">財務指標</th>
+                                    <th class="py-2 px-1 text-right font-semibold">基準年*</th>
+                                    <th class="py-2 px-1 text-right font-semibold">第一年*</th>
+                                    <th class="py-2 px-1 text-right font-semibold">第二年*</th>
+                                    <th class="py-2 px-1 text-right font-semibold text-indigo-700">第三年*</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-600">
+                                <tr>
+                                    <td class="py-2 px-2 font-medium text-slate-800">營業收入</td>
+                                    <td class="py-2 px-1 text-right">13,500</td>
+                                    <td class="py-2 px-1 text-right">14,800</td>
+                                    <td class="py-2 px-1 text-right">16,800</td>
+                                    <td class="py-2 px-1 text-right font-bold text-slate-900" id="tbRevY3">18,200</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-2 font-medium text-slate-800">營業成本 (CoS)</td>
+                                    <td class="py-2 px-1 text-right">11,880</td>
+                                    <td class="py-2 px-1 text-right">12,580</td>
+                                    <td class="py-2 px-1 text-right">13,776</td>
+                                    <td class="py-2 px-1 text-right" id="tbCosY3">14,560</td>
+                                </tr>
+                                <tr class="bg-indigo-50/50">
+                                    <td class="py-2 px-2 font-bold text-indigo-900">營業毛利 (GP)</td>
+                                    <td class="py-2 px-1 text-right font-semibold">1,620</td>
+                                    <td class="py-2 px-1 text-right font-semibold">2,220</td>
+                                    <td class="py-2 px-1 text-right font-semibold">3,024</td>
+                                    <td class="py-2 px-1 text-right font-bold text-indigo-700" id="tbGpY3">3,640</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-2 text-slate-500">毛利率 (%)</td>
+                                    <td class="py-2 px-1 text-right">12.0%</td>
+                                    <td class="py-2 px-1 text-right">15.0%</td>
+                                    <td class="py-2 px-1 text-right">18.0%</td>
+                                    <td class="py-2 px-1 text-right font-semibold" id="tbGpmY3">20.0%</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-2 font-medium text-slate-800">營運開銷 (SG&A)</td>
+                                    <td class="py-2 px-1 text-right">1,180</td>
+                                    <td class="py-2 px-1 text-right">1,120</td>
+                                    <td class="py-2 px-1 text-right">1,080</td>
+                                    <td class="py-2 px-1 text-right" id="tbSgaY3">1,050</td>
+                                </tr>
+                                <tr class="bg-amber-50/50">
+                                    <td class="py-2 px-2 font-bold text-amber-900">息稅前利潤 (EBIT)</td>
+                                    <td class="py-2 px-1 text-right font-semibold">440</td>
+                                    <td class="py-2 px-1 text-right font-semibold">1,100</td>
+                                    <td class="py-2 px-1 text-right font-semibold">1,944</td>
+                                    <td class="py-2 px-1 text-right font-bold text-amber-700" id="tbEbitY3">2,590</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-2 text-slate-500">EBIT 利潤率 (%)</td>
+                                    <td class="py-2 px-1 text-right">3.3%</td>
+                                    <td class="py-2 px-1 text-right">7.4%</td>
+                                    <td class="py-2 px-1 text-right">11.6%</td>
+                                    <td class="py-2 px-1 text-right font-semibold" id="tbEbitmY3">14.2%</td>
+                                </tr>
+                                <tr class="bg-emerald-50 font-bold">
+                                    <td class="py-2 px-2 text-emerald-900">淨利潤 (Net Profit)</td>
+                                    <td class="py-2 px-1 text-right text-slate-800">367.4</td>
+                                    <td class="py-2 px-1 text-right text-slate-800">918.5</td>
+                                    <td class="py-2 px-1 text-right text-slate-800">1,623.2</td>
+                                    <td class="py-2 px-1 text-right text-emerald-700 text-sm" id="tbNpY3">2,162.7</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-[10px] text-slate-400 italic">* 註：表中所有數值均為基於行業基準與企業規模測算之估計數據。</p>
+                </div>
+
+                <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-4">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <h3 class="font-bold text-slate-900 text-base">📈 三年獲利成長曲線圖 (萬港元)</h3>
+                        <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Chart.js 動態頁面渲染</span>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="financialChart"></canvas>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <label for="execRateSlider" class="text-xs font-bold text-slate-800 flex items-center space-x-2">
+                                <span>🎛️ 策略執行達成率模擬器：</span>
+                                <span id="sliderValueText" class="text-indigo-600 font-extrabold text-sm">100%</span>
+                            </label>
+                            <button onclick="resetSimulator()" class="text-[11px] text-slate-500 hover:text-indigo-600 underline">重置預設值</button>
+                        </div>
+                        <input id="execRateSlider" type="range" min="50" max="150" value="100" step="5" 
+                               class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+                               oninput="updateFinancialSimulation(this.value)">
+                        <div class="flex justify-between text-[10px] text-slate-400">
+                            <span>保守執行 (50%)</span>
+                            <span>標準預測 (100%)</span>
+                            <span>超額達成 (150%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="space-y-6">
+            <div class="border-l-4 border-indigo-600 pl-4">
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-900">6. 戰略實施階段藍圖 (36 個月推動時程)</h2>
+                <p class="text-slate-600 text-sm mt-1">
+                    分為三個階段循序漸進推動內部重組、技術導入與高附加值業務拓展，確保風險可控與現金流健康。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-2xl border-t-4 border-sky-500 border-x border-b border-slate-200 shadow-sm p-6 space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-bold bg-sky-100 text-sky-800 px-2.5 py-1 rounded-full">第 1 - 6 個月</span>
+                        <span class="text-lg">⚙️</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base">第一階段：成本重組與資助申請</h3>
+                    <ul class="text-xs text-slate-600 space-y-2.5">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-sky-500 font-bold">•</span>
+                            <span><strong>屯門倉樓層整併：</strong> 與 YKK 大廈業主展開談判，整併為 2 個相鄰樓層並鎖定租金減讓優惠。</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-sky-500 font-bold">•</span>
+                            <span><strong>TPLSP 資助申請：</strong> 向特區政府正式遞交 200 萬港元資助申請，進行 AI-WMS/TMS 供應商招標。</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-sky-500 font-bold">•</span>
+                            <span><strong>車隊運力對接：</strong> 串聯 SBS 華南（佛山、大連、理光物流）網絡，建立北上回程運力共享機制。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-2xl border-t-4 border-indigo-500 border-x border-b border-slate-200 shadow-sm p-6 space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-bold bg-indigo-100 text-indigo-800 px-2.5 py-1 rounded-full">第 7 - 18 個月</span>
+                        <span class="text-lg">🚀</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base">第二階段：技術驗收與業務上線</h3>
+                    <ul class="text-xs text-slate-600 space-y-2.5">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-indigo-500 font-bold">•</span>
+                            <span><strong>智慧 WMS/TMS 上線：</strong> 完成系統全面升級，與香港海關及 HKIA 數據平台實施 EDI 自動化對接。</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-indigo-500 font-bold">•</span>
+                            <span><strong>火炭生醫專區改造：</strong> 火炭倉庫完成恆溫恆濕與 GDP 規範改造，切入跨國醫療器械物流。</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-indigo-500 font-bold">•</span>
+                            <span><strong>電商 BCS 2.0 推廣：</strong> 成立跨境電商專案組，對接華南出海賣家提供集運與重貼標籤加值服務。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-2xl border-t-4 border-emerald-500 border-x border-b border-slate-200 shadow-sm p-6 space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-bold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full">第 19 - 36 個月</span>
+                        <span class="text-lg">🎯</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base">第三階段：品牌變現與規模擴張</h3>
+                    <ul class="text-xs text-slate-600 space-y-2.5">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-emerald-500 font-bold">•</span>
+                            <span><strong>ESG 顧問商業化：</strong> 全面推廣「綠色循環包裝與 ESG 減碳顧問」，獲取高毛利 4PL 技術合約。</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-emerald-500 font-bold">•</span>
+                            <span><strong>人均產值極大化：</strong> 驗證自動化與動態調度帶來的人均作業效率提升，鞏固 EBIT 利潤率高於 14%。</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-emerald-500 font-bold">•</span>
+                            <span><strong>抗風險矩陣完成：</strong> 建立醫療器械、高價電商與綠色工程物流三支柱，降低對傳統電子業依賴。</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-3">
+            <div class="flex justify-center items-center space-x-2 text-white font-bold text-sm">
+                <span>📦</span>
+                <span>香港東芝物流有限公司 (Toshiba Logistics Hong Kong) 策略研究報告</span>
+            </div>
+            <p class="text-xs text-slate-500 max-w-2xl mx-auto leading-relaxed">
+                免責聲明：本報告內所有財務指標、年新增營收、毛利率區間、節約金額及投資回收期等數據，均為基於行業基準與企業現有營運規模進行之專業推算與估計數據（*），僅供決策參考。
+            </p>
+            <p class="text-[11px] text-slate-600">
+                &copy; 2026 Toshiba Logistics HK Strategic Analysis App. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function formatChartLabel(str) {
+            if (typeof str !== 'string') return str;
+            if (str.length <= 16) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > 16) {
+                    lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            });
+            if (currentLine.trim()) lines.push(currentLine.trim());
+            return lines.length > 1 ? lines : str;
+        }
+
+        const sharedTooltipConfig = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        function switchStrategyTab(type) {
+            const tabRev = document.getElementById('tabRevenue');
+            const tabCost = document.getElementById('tabCost');
+            const secRev = document.getElementById('revenueSection');
+            const secCost = document.getElementById('costSection');
+
+            if (type === 'revenue') {
+                tabRev.className = "pb-3 text-sm font-bold border-b-2 border-indigo-600 text-indigo-600 px-2 transition";
+                tabCost.className = "pb-3 text-sm font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-800 px-2 transition";
+                secRev.classList.remove('hidden');
+                secCost.classList.add('hidden');
+            } else {
+                tabCost.className = "pb-3 text-sm font-bold border-b-2 border-amber-600 text-amber-600 px-2 transition";
+                tabRev.className = "pb-3 text-sm font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-800 px-2 transition";
+                secCost.classList.remove('hidden');
+                secRev.classList.add('hidden');
+            }
+        }
+
+        const baseFinancialData = {
+            years: ['基準年*', '第一年*', '第二年*', '第三年*'],
+            revenue: [13500, 14800, 16800, 18200],
+            grossProfit: [1620, 2220, 3024, 3640],
+            netProfit: [367.4, 918.5, 1623.2, 2162.7]
+        };
+
+        let finChart;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctxMacro = document.getElementById('macroChart').getContext('2d');
+            new Chart(ctxMacro, {
+                type: 'line',
+                data: {
+                    labels: ['2022', '2023', '2024', '2025 (E)', '2026 (E)'],
+                    datasets: [
+                        {
+                            label: 'HKIA空運量 (百萬公噸)',
+                            data: [4.2, 4.33, 4.9, 5.07, 5.25],
+                            borderColor: '#6366f1',
+                            backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                            yAxisID: 'yCargo',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.3
+                        },
+                        {
+                            label: '屯門工廈租金 (HK$/sqft)',
+                            data: [13.2, 12.5, 11.1, 10.8, 10.6],
+                            borderColor: '#f59e0b',
+                            backgroundColor: '#f59e0b',
+                            yAxisID: 'yRent',
+                            borderWidth: 2.5,
+                            borderDash: [5, 5],
+                            fill: false,
+                            tension: 0.2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: sharedTooltipConfig,
+                        legend: { position: 'top', labels: { boxWidth: 12, font: { size: 11 } } }
+                    },
+                    scales: {
+                        x: { grid: { display: false } },
+                        yCargo: {
+                            type: 'linear',
+                            position: 'left',
+                            title: { display: true, text: '貨量 (百萬公噸)', font: { size: 10 } },
+                            min: 3.5,
+                            max: 6.0
+                        },
+                        yRent: {
+                            type: 'linear',
+                            position: 'right',
+                            title: { display: true, text: '月租 (HK$/sqft)', font: { size: 10 } },
+                            min: 8.0,
+                            max: 16.0,
+                            grid: { drawOnChartArea: false }
+                        }
+                    }
+                }
+            });
+
+            const ctxStrat = document.getElementById('strategyChart').getContext('2d');
+            new Chart(ctxStrat, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        formatChartLabel('高毛利醫療器械專案物流'),
+                        formatChartLabel('大灣區跨境電商 BCS 2.0'),
+                        formatChartLabel('綠色循環包裝 ESG 顧問'),
+                        formatChartLabel('屯門倉樓層整併與租約重談'),
+                        formatChartLabel('政府 TPLSP 智慧 WMS/TMS'),
+                        formatChartLabel('跨境車隊拼車消減空載')
+                    ],
+                    datasets: [
+                        {
+                            label: '開源毛利貢獻 (中位數 萬HKD)',
+                            data: [380, 370, 255, 0, 0, 0],
+                            backgroundColor: '#10b981'
+                        },
+                        {
+                            label: '節流成本節約 (中位數 萬HKD)',
+                            data: [0, 0, 0, 300, 230, 160],
+                            backgroundColor: '#f59e0b'
+                        }
+                    ]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: sharedTooltipConfig,
+                        legend: { position: 'top', labels: { boxWidth: 12, font: { size: 11 } } }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: { display: true, text: '年度金額效益 (萬港元)', font: { size: 10 } }
+                        },
+                        y: { grid: { display: false } }
+                    }
+                }
+            });
+
+            const ctxFin = document.getElementById('financialChart').getContext('2d');
+            finChart = new Chart(ctxFin, {
+                type: 'bar',
+                data: {
+                    labels: baseFinancialData.years,
+                    datasets: [
+                        {
+                            label: '營業收入 (萬HKD)',
+                            data: [...baseFinancialData.revenue],
+                            backgroundColor: 'rgba(99, 102, 241, 0.25)',
+                            borderColor: '#6366f1',
+                            borderWidth: 1.5,
+                            order: 3
+                        },
+                        {
+                            label: '營業毛利 (萬HKD)',
+                            data: [...baseFinancialData.grossProfit],
+                            backgroundColor: 'rgba(16, 185, 129, 0.7)',
+                            borderColor: '#10b981',
+                            borderWidth: 1,
+                            order: 2
+                        },
+                        {
+                            label: '淨利潤 (萬HKD)',
+                            type: 'line',
+                            data: [...baseFinancialData.netProfit],
+                            borderColor: '#f59e0b',
+                            backgroundColor: '#f59e0b',
+                            borderWidth: 3,
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
+                            fill: false,
+                            tension: 0.2,
+                            order: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        tooltip: sharedTooltipConfig,
+                        legend: { position: 'top', labels: { boxWidth: 12, font: { size: 11 } } }
+                    },
+                    scales: {
+                        x: { grid: { display: false } },
+                        y: {
+                            beginAtZero: true,
+                            ticks: { callback: function(val) { return val + '萬'; } }
+                        }
+                    }
+                }
+            });
+        });
+
+        function updateFinancialSimulation(rate) {
+            const factor = parseFloat(rate) / 100.0;
+            document.getElementById('sliderValueText').innerText = rate + '%';
+
+            const baseRevInc = 4700;
+            const baseGpInc = 2020;
+            const baseSgaSav = 130;
+
+            const simRevY3 = 13500 + (baseRevInc * factor);
+            const simGpY3 = 1620 + (baseGpInc * factor);
+            const simCosY3 = simRevY3 - simGpY3;
+            const simSgaY3 = 1180 - (baseSgaSav * factor);
+            const simEbitY3 = simGpY3 - simSgaY3;
+            const simNpY3 = simEbitY3 * (1 - 0.165);
+
+            const gpmY3 = (simGpY3 / simRevY3) * 100;
+            const ebitmY3 = (simEbitY3 / simRevY3) * 100;
+
+            document.getElementById('tbRevY3').innerText = Math.round(simRevY3).toLocaleString();
+            document.getElementById('tbCosY3').innerText = Math.round(simCosY3).toLocaleString();
+            document.getElementById('tbGpY3').innerText = Math.round(simGpY3).toLocaleString();
+            document.getElementById('tbGpmY3').innerText = gpmY3.toFixed(1) + '%';
+            document.getElementById('tbSgaY3').innerText = Math.round(simSgaY3).toLocaleString();
+            document.getElementById('tbEbitY3').innerText = Math.round(simEbitY3).toLocaleString();
+            document.getElementById('tbEbitmY3').innerText = ebitmY3.toFixed(1) + '%';
+            document.getElementById('tbNpY3').innerText = simNpY3.toFixed(1).toLocaleString();
+
+            if (finChart) {
+                finChart.data.datasets[0].data[3] = Math.round(simRevY3);
+                finChart.data.datasets[1].data[3] = Math.round(simGpY3);
+                finChart.data.datasets[2].data[3] = parseFloat(simNpY3.toFixed(1));
+                finChart.update('none');
+            }
+        }
+
+        function resetSimulator() {
+            document.getElementById('execRateSlider').value = 100;
+            updateFinancialSimulation(100);
+        }
+    </script>
+</body>
+</html>
